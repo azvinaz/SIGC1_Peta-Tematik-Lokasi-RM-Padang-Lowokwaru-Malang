@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebGIS RM Padang Malang</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- FontAwesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<!-- Particles -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<style>
+:root{
+  --bg-dark:#0f172a;
+  --bg-light:#f5f7fb;
+  --text-dark:#ffffff;
+  --text-light:#0f172a;
+  --glass-dark:rgba(255,255,255,0.08);
+  --glass-light:rgba(0,0,0,0.06);
+  --accent:#38bdf8;
+}
+
+body{
+  margin:0;
+  font-family:"Segoe UI",sans-serif;
+  background:var(--bg-dark);
+  color:var(--text-dark);
+  transition:.4s;
+}
+
+body.light{
+  background:var(--bg-light);
+  color:var(--text-light);
+}
+
+#particles-js{
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+
+.glass{
+  background:var(--glass-dark);
+  backdrop-filter:blur(14px);
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.15);
+  transition:.4s;
+}
+
+body.light .glass{
+  background:var(--glass-light);
+  border:1px solid rgba(0,0,0,0.1);
+}
+
+.navbar{
+  background:transparent!important;
+}
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding-top:80px;
+}
+
+.btn-map{
+  background:linear-gradient(45deg,#38bdf8,#22d3ee);
+  border:none;
+  color:#000;
+  font-weight:600;
+  border-radius:30px;
+  padding:12px 28px;
+}
+
+.toggle-mode{
+  cursor:pointer;
+  font-size:1.2rem;
+}
+
+footer{
+  text-align:center;
+  padding:15px;
+  opacity:.8;
+}
+
+</style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#"><i class="fa-solid fa-map-location-dot"></i> WebGIS Klojen</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav align-items-center gap-2">
+        <li class="nav-item"><a class="nav-link active" href="#">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="peta.html">Peta</a></li>
+        <li class="nav-item">
+          <span class="toggle-mode nav-link"><i class="fa-solid fa-moon"></i></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="row g-4 align-items-center glass p-4">
+
+      <div class="col-md-7">
+        <h1 class="fw-bold mb-3">Peta Tematik Lokasi RM Padang di Kecamatan Lowokwaru Kota Malang</h1>
+        <p class="mb-4">
+          Peta ini menyajikan informasi lokasi rumah makan Padang di Kota Malang yang disusun menggunakan aplikasi QGIS. Peta ini bertujuan untuk memudahkan masyarakat dan pengunjung dalam mencari serta mengetahui persebaran lokasi rumah makan Padang secara cepat. Informasi yang ditampilkan meliputi titik lokasi rumah makan beserta keterangan pendukungnya.
+        </p>
+
+        <a href="map/peta.html" class="btn btn-map">
+          <i class="fa-solid fa-earth-asia"></i> Buka Peta
+        </a>
+      </div>
+
+      <div class="col-md-5">
+        <div class="glass p-4">
+          <h5 class="fw-bold mb-3 text-center">Profil Pembuat</h5>
+          <p><i class="fa-solid fa-user"></i> Vian Maulana Fatah</p>
+          <p><i class="fa-solid fa-id-card"></i> 23201196/R</p>
+          <p><i class="fa-solid fa-graduation-cap"></i> Teknik Informatika</p>
+          <p><i class="fa-solid fa-building-columns"></i> Institut Asia Malang</p>
+          <p><i class="fa-solid fa-envelope"></i> laurentsvee@gmail.com</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Vian Maulana Fatah • QGIS & qgis2web
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+/* Dark Light Toggle */
+const toggle = document.querySelector(".toggle-mode");
+toggle.onclick = () => {
+  document.body.classList.toggle("light");
+  toggle.innerHTML = document.body.classList.contains("light")
+    ? '<i class="fa-solid fa-sun"></i>'
+    : '<i class="fa-solid fa-moon"></i>';
+};
+
+/* Particles Config */
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 60 },
+    size: { value: 3 },
+    move: { speed: 1 },
+    line_linked: { enable: true, opacity: 0.2 }
+  }
+});
+</script>
+</body>
+</html>
